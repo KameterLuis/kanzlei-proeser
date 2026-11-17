@@ -1,0 +1,20 @@
+# Abhängigkeiten
+/node_modules
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Logs & System
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Umgebungsvariablen
+.env*
+!.env.example
+
+# Vercel
+.vercel

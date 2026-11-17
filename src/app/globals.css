@@ -1,0 +1,737 @@
+/* ==========================================================================
+   Steuerkanzlei Pröser – Stylesheet
+   Maße, Farben und Schriften 1:1 von der bisherigen Website übernommen,
+   technisch modernisiert (Grid, Sticky-Header, Custom Properties, responsive).
+   ========================================================================== */
+
+:root {
+  --blue-dark: #003399;
+  --blue: #0086cd;
+  --red: #ea4c3a;
+  --text: #666666;
+  --bg-1: #ffffff;
+  --bg-2: #eee8e8;
+  --footer-bg: #333333;
+  --footer-text: #cccccc;
+
+  --font-sans: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+
+  --header-h: 158px;
+  --gutter: 20px;
+}
+
+/* ---------- Basis ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+blockquote,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+address {
+  font-style: normal;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 1000;
+  padding: 10px 20px;
+  background: var(--red);
+  color: #fff;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.inner {
+  max-width: calc(1000px + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.bg-1 {
+  background-color: var(--bg-1);
+}
+
+.bg-2 {
+  background-color: var(--bg-2);
+}
+
+/* ---------- Kopfbereich ---------- */
+.site-top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.topbar {
+  background-color: var(--blue);
+  padding: 11px 0;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.topbar__inner,
+.header__inner {
+  max-width: calc(1200px + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.topbar__inner {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.topbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+}
+
+.header {
+  background-color: var(--blue-dark);
+  padding: 20px 0;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.header__logo {
+  display: block;
+  flex-shrink: 0;
+  height: 75px;
+}
+
+.main-nav {
+  margin-top: 15px;
+}
+
+.main-nav__toggle {
+  display: none;
+}
+
+.main-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 2px;
+  list-style: none;
+}
+
+.main-nav__list a {
+  display: block;
+  padding: 10px 20px;
+  background-color: var(--blue);
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.main-nav__list a:hover,
+.main-nav__list a.is-current {
+  background-color: var(--red);
+}
+
+.main-nav__list a:focus-visible {
+  outline-color: #fff;
+  outline-offset: -4px;
+}
+
+/* ---------- Abschnittstitel ---------- */
+.section-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.section-title h1,
+.section-title h2 {
+  font-family: var(--font-serif);
+  font-size: 60px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.section-title svg {
+  display: block;
+  margin: 9px auto 0;
+}
+
+.section-subtitle {
+  font-size: 36px;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 45px;
+}
+
+.column-title {
+  font-size: 36px;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 30px;
+}
+
+/* ---------- Parallax-Flächen ---------- */
+.parallax {
+  position: relative;
+  overflow: hidden;
+  background-color: #3f3f3f; /* Fallback, bis das Foto geladen ist */
+}
+
+.parallax__layer {
+  position: absolute;
+  inset: -200px 0;
+  z-index: 0;
+  will-change: transform;
+}
+
+.parallax__layer img {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.band {
+  height: 580px;
+}
+
+/* ---------- Willkommen ---------- */
+.hero {
+  min-height: 750px;
+  padding: 160px 0 110px;
+  color: #fff;
+  text-align: center;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: calc(1200px + 2 * var(--gutter));
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 60px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.hero svg {
+  display: block;
+  margin: 14px auto 25px;
+}
+
+.hero__subtitle {
+  font-size: 36px;
+  line-height: 1.1;
+  margin-bottom: 45px;
+}
+
+/* ---------- Raster ---------- */
+.section {
+  padding: 110px 0;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+/* ---------- Das sind wir ---------- */
+.about {
+  margin-top: 40px;
+}
+
+.quote {
+  quotes: "\201C" "\201D";
+}
+
+.quote p {
+  display: inline;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.quote::before,
+.quote::after {
+  color: var(--text);
+  font-size: 4em;
+  line-height: 0.1em;
+}
+
+.quote::before {
+  content: open-quote;
+  margin-right: 0.1em;
+  vertical-align: -0.4em;
+}
+
+.quote::after {
+  content: close-quote;
+  margin-left: 0.1em;
+  vertical-align: -0.5em;
+}
+
+/* ---------- Leistungen ---------- */
+.star-list {
+  list-style: none;
+}
+
+.star-list li {
+  position: relative;
+  padding-left: 20px;
+  line-height: 2;
+}
+
+.star-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(1em - 6px);
+  width: 12px;
+  height: 12px;
+  background: var(--red);
+  /* sechszackiger Stern wie list-dot.png des Originals */
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cg stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 1.5v9M2.1 3.75l7.8 4.5M2.1 8.25l7.8-4.5'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ---------- Links ---------- */
+.links {
+  padding: 0 0 90px;
+}
+
+.links__title {
+  margin-bottom: 0;
+}
+
+.links__grid {
+  margin-top: 50px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.links__group {
+  margin-bottom: 14px;
+}
+
+.links__group h3 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.links__group ul {
+  list-style: none;
+}
+
+.links a {
+  color: var(--text);
+}
+
+.links a:hover {
+  color: var(--red);
+  text-decoration: none;
+}
+
+/* ---------- Kontakt ---------- */
+.section--contact {
+  position: relative;
+  padding-bottom: 65px;
+}
+
+.section a,
+.legal a {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.section a:hover,
+.legal a:hover {
+  color: var(--red);
+  text-decoration: none;
+}
+
+.contact {
+  margin-top: 50px;
+}
+
+.contact__title {
+  margin-bottom: 15px;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 650px) minmax(0, 300px);
+  gap: 50px;
+}
+
+.contact-icons {
+  list-style: none;
+}
+
+.contact-icons li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.contact-icons a {
+  text-decoration: none;
+}
+
+.contact__image {
+  margin: 15px 0;
+}
+
+.lightbox__trigger {
+  display: block;
+  cursor: zoom-in;
+}
+
+.lightbox {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  max-width: min(92vw, 1024px);
+  overflow: visible;
+}
+
+.lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox img {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  padding: 6px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.lightbox__close:hover,
+.lightbox__close:focus-visible {
+  opacity: 1;
+}
+
+/* ---------- Nach-oben-Button ---------- */
+.to-top {
+  position: absolute;
+  left: 50%;
+  bottom: -25px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 50px;
+  margin-left: -20px;
+  background: var(--red);
+  color: #fff !important;
+  transition: background-color 0.15s ease;
+}
+
+.to-top:hover {
+  background: #d63b2a;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background-color: var(--footer-bg);
+  padding: 100px 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--footer-text);
+}
+
+.footer a {
+  color: var(--footer-text);
+}
+
+.footer a:hover {
+  color: var(--red);
+  text-decoration: none;
+}
+
+.footer__divider {
+  display: block;
+  margin: 20px auto;
+}
+
+.footer__address p {
+  margin: 0;
+}
+
+/* ---------- Rechtstexte ---------- */
+.legal {
+  padding: 5em 0;
+}
+
+.legal__body {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.legal__body h2 {
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 1.6em 0 0.5em;
+}
+
+.legal__stand {
+  margin-top: 2em;
+  font-size: 14px;
+}
+
+.todo {
+  background: #fff3b0;
+  color: #7a5b00;
+  padding: 0 4px;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1040px) {
+  .section-title h1,
+  .section-title h2,
+  .hero h1 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-nav__list a {
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+}
+
+/* ---------- Smartphone ---------- */
+@media (max-width: 767px) {
+  :root {
+    --header-h: 154px;
+    --gutter: 15px;
+  }
+
+  .topbar {
+    display: none;
+  }
+
+  .header {
+    padding: 20px 0 0;
+  }
+
+  .header__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+  }
+
+  .header__logo {
+    margin: 0 auto;
+  }
+
+  .main-nav {
+    margin-top: 15px;
+  }
+
+  .main-nav__toggle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+    border: 0;
+    background-color: var(--blue);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .main-nav__list {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .main-nav__list.is-open {
+    display: flex;
+  }
+
+  .main-nav__list a {
+    text-align: center;
+    font-size: 18px;
+    padding: 12px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .section-title h1,
+  .section-title h2,
+  .hero h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .section-subtitle,
+  .hero__subtitle,
+  .column-title {
+    font-size: 28px;
+  }
+
+  .hero {
+    min-height: 560px;
+    padding: 90px 0 60px;
+  }
+
+  .band {
+    height: 300px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .section--contact {
+    padding-bottom: 50px;
+  }
+
+  .links {
+    padding: 0 0 60px;
+  }
+
+  .footer {
+    padding: 60px 0;
+  }
+
+  .grid-2,
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .star-list li {
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .star-list li::before {
+    top: calc(0.7em - 6px);
+  }
+
+  .legal {
+    padding: 3em 0;
+  }
+}
+
+/* ---------- Druck ---------- */
+@media print {
+  .site-top,
+  .parallax,
+  .to-top,
+  .skip-link {
+    display: none !important;
+  }
+
+  .section {
+    padding: 20px 0;
+  }
+}
