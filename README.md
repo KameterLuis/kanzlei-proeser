@@ -72,5 +72,14 @@ damit ohne Server auf Cloudflare Pages.
 | Build output directory          | `out`                            |
 | Node-Version                    | aus `.node-version` (22)         |
 
-Jeder Push auf `main` wird automatisch veröffentlicht; andere Branches bekommen eine Vorschau-URL.
+**Variante A – mit GitHub verbunden:** Jeder Push auf `main` wird automatisch veröffentlicht.
+
+**Variante B – direkt vom eigenen Rechner (ohne GitHub):**
+
+```bash
+npm run deploy
+```
+
+Baut die Seite und lädt `out/` per Wrangler zu Cloudflare Pages hoch (Projekt `steuerkanzlei-proeser`).
+Beim ersten Mal öffnet sich der Browser zur Cloudflare-Anmeldung.
 HTTP-Header (Sicherheit, Caching) stehen in `public/_headers`.

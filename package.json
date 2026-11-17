@@ -6,9 +6,13 @@
   "scripts": {
     "postinstall": "node scripts/fetch-images.mjs",
     "images": "node scripts/fetch-images.mjs",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "predev": "node scripts/optimize-images.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/optimize-images.mjs",
     "build": "next build",
-    "start": "next start",
+    "preview": "npx --yes serve@14 out",
+    "deploy": "npm run build && wrangler pages deploy out --project-name steuerkanzlei-proeser --branch main",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
@@ -25,7 +29,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^16.4.6",
-    "typescript": "^5"
+    "sharp": "^0.35.5",
+    "typescript": "^5",
+    "wrangler": "^4.164.0"
   },
   "engines": {
     "node": ">=20.9"

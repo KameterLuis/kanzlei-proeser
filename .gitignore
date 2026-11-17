@@ -2,6 +2,7 @@
 /node_modules
 
 # Next.js
+/public/images/opt/
 /.next/
 /out/
 next-env.d.ts

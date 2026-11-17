@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { LegalPage, Todo } from "@/components/LegalPage";
+import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -7,75 +7,90 @@ export const metadata: Metadata = {
   alternates: { canonical: "/impressum" },
 };
 
-/*
- * HINWEIS: Die bisherige Seite hatte ein leeres Impressum. Dieser Text ist ein
- * Entwurf auf Basis der bekannten Daten. Alle mit [ … ] markierten Stellen
- * müssen vor der Veröffentlichung ergänzt und der Text insgesamt geprüft werden.
- */
+function Anschrift() {
+  return (
+    <p>
+      {site.owner}
+      <br />
+      Steuerberater / Rechtsbeistand
+      <br />
+      {site.address.street}
+      <br />
+      {site.address.zip} {site.address.city}
+    </p>
+  );
+}
+
 export default function ImpressumPage() {
   return (
     <LegalPage title="Impressum">
-      <h2>Angaben gemäß § 5 DDG</h2>
-      <p>
-        {site.owner}
-        <br />
-        Steuerberater und Rechtsbeistand
-        <br />
-        {site.shortName}
-        <br />
-        {site.address.street} ({site.address.note})
-        <br />
-        {site.address.zip} {site.address.city}
-      </p>
+      <h2>Anbieterkennung gem. § 5 Digitale-Dienste-Gesetz (DDG)</h2>
+      <Anschrift />
 
-      <h2>Kontakt</h2>
+      <h3>Kontakt:</h3>
       <p>
-        Telefon: <a href={site.phone.href}>{site.phone.display}</a>
+        Tel: <a href={site.phone.href}>{site.phone.display}</a>
         <br />
-        Telefax: {site.fax.display}
+        Fax: {site.fax.display}
         <br />
         E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+        <br />
+        Web: <a href={site.web.href}>{site.web.display}</a>
+      </p>
+      <p>Die gesetzlichen Berufsbezeichnungen wurden in der Bundesrepublik Deutschland verliehen.</p>
+
+      <h2>Zulassungs-/Aufsichtsbehörden:</h2>
+      <p>
+        Steuerberaterkammer Rheinland-Pfalz
+        <br />
+        Hölderlinstraße 1
+        <br />
+        55131 Mainz
       </p>
 
-      <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+      <h2>Berufsrechtliche Regelungen:</h2>
+      <p>Der Berufsstand der Steuerberater unterliegt im Wesentlichen den folgenden gesetzlichen Regelungen:</p>
+      <ul className="legal__list">
+        <li>Steuerberatungsgesetz (StBerG)</li>
+        <li>Durchführungsverordnung zum Steuerberatungsgesetz (DVStB)</li>
+        <li>Berufsordnung (BOStB)</li>
+        <li>Steuerberatervergütungsverordnung (StBVV)</li>
+      </ul>
       <p>
-        Berufsbezeichnung: Steuerberater (verliehen in der Bundesrepublik Deutschland)
-        <br />
-        Zuständige Kammer: Steuerberaterkammer Rheinland-Pfalz, Hölderlinstraße 1, 55131 Mainz,{" "}
-        <a href="https://www.sbk-rlp.de/" target="_blank" rel="noopener noreferrer">
-          www.sbk-rlp.de
-        </a>
-      </p>
-      <p>
-        Es gelten insbesondere folgende berufsrechtliche Regelungen: Steuerberatungsgesetz (StBerG),
-        Durchführungsverordnung zum Steuerberatungsgesetz (DVStB), Berufsordnung der Steuerberater (BOStB)
-        und Steuerberatervergütungsverordnung (StBVV). Die Regelungen können auf der Website der
-        Bundessteuerberaterkammer eingesehen werden:{" "}
-        <a href="https://www.bstbk.de/" target="_blank" rel="noopener noreferrer">
+        Die berufsrechtlichen Regelungen können auf der Homepage der Bundessteuerberaterkammer (
+        <a href="https://www.bstbk.de" target="_blank" rel="noopener noreferrer">
           www.bstbk.de
         </a>
-        .
-      </p>
-      <p>
-        Rechtsbeistand: <Todo>bitte ergänzen – zuständige Kammer bzw. Zulassungsbehörde</Todo>
+        ) eingesehen werden.
       </p>
 
-      <h2>Umsatzsteuer-Identifikationsnummer</h2>
-      <p>
-        USt-IdNr. gemäß § 27a Umsatzsteuergesetz: <Todo>bitte ergänzen oder Abschnitt entfernen</Todo>
-      </p>
+      <h2>Verantwortlich für den Inhalt gem. § 18 Abs. 2 MStV</h2>
+      <Anschrift />
 
-      <h2>Berufshaftpflichtversicherung</h2>
+      <h2>Webdesign und Programmierung:</h2>
       <p>
-        <Todo>Name und Anschrift des Versicherers</Todo>
+        NEUFORMAT - Büro für Mediendesign
         <br />
-        Räumlicher Geltungsbereich: <Todo>bitte ergänzen</Todo>
+        Werkstättestraße 8
+        <br />
+        67655 Kaiserslautern
+        <br />
+        Tel: <a href="tel:+496315704898">+49 (0) 631 - 570 48 98</a>
+        <br />
+        E-Mail: <a href="mailto:info@neuformat.com">info@neuformat.com</a>
+        <br />
+        Web:{" "}
+        <a href="https://www.neuformat.com" target="_blank" rel="noopener noreferrer">
+          www.neuformat.com
+        </a>
       </p>
 
-      <h2>Verbraucherstreitbeilegung</h2>
+      <h2>Widerspruch gegen Werbe-Mails</h2>
       <p>
-        Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
-        Verbraucherschlichtungsstelle teilzunehmen.
+        Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht
+        ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. Die Betreiber
+        der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von
+        Werbeinformationen, etwa durch Spam-E-Mails, vor.
       </p>
     </LegalPage>
   );

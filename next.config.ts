@@ -1,20 +1,18 @@
 import type { NextConfig } from "next";
 
-const securityHeaders = [
-  { key: "X-Content-Type-Options", value: "nosniff" },
-  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  { key: "X-Frame-Options", value: "SAMEORIGIN" },
-  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
-  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
-];
-
+/**
+ * Statischer Export für Cloudflare Pages: `npm run build` erzeugt den Ordner `out/`
+ * mit fertigem HTML/CSS/JS. Security-Header stehen in public/_headers.
+ */
 const nextConfig: NextConfig = {
+  output: "export",
   poweredByHeader: false,
   images: {
-    formats: ["image/avif", "image/webp"],
-  },
-  async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
+    // Muss mit WIDTHS in scripts/optimize-images.mjs übereinstimmen
+    deviceSizes: [640, 1080, 1920, 2560],
+    imageSizes: [256, 384],
   },
 };
 

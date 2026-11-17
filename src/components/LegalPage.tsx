@@ -14,8 +14,3 @@ export function LegalPage({ title, children }: { title: string; children: React.
     </article>
   );
 }
-
-/** Markiert Stellen, die vor der Veröffentlichung noch ergänzt werden müssen. */
-export function Todo({ children }: { children: React.ReactNode }) {
-  return <mark className="todo">[{children}]</mark>;
-}

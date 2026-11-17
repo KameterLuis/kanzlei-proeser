@@ -579,15 +579,27 @@ strong {
   margin: 1.6em 0 0.5em;
 }
 
-.legal__stand {
-  margin-top: 2em;
-  font-size: 14px;
+.legal__body h3 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 1.2em 0 0.4em;
 }
 
-.todo {
-  background: #fff3b0;
-  color: #7a5b00;
-  padding: 0 4px;
+.legal__list {
+  margin: 0 0 1em 1.5em;
+}
+
+.legal__list li {
+  margin-bottom: 0.25em;
+}
+
+ul.legal__list {
+  list-style: disc;
+}
+
+ol.legal__list {
+  list-style: decimal;
 }
 
 /* ---------- Tablet ---------- */
