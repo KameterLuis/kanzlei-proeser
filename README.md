@@ -15,8 +15,8 @@ npm run dev      # Entwicklungsserver auf http://localhost:3000
 Für den Live-Betrieb:
 
 ```bash
-npm run build
-npm start
+npm run build    # erzeugt die fertige Seite im Ordner out/
+npm run preview  # out/ lokal ansehen
 ```
 
 Falls beim Installieren die Fotos nicht geladen werden konnten: `npm run images` erneut ausführen
@@ -36,25 +36,41 @@ manuell nach `public/images/` legen. **Die Bilder danach mit ins Git-Repository 
 
 ## Was ist neu gegenüber der alten Seite?
 
-- **Performance:** Bilder werden automatisch als AVIF/WebP in passender Größe ausgeliefert; kein jQuery mehr.
+- **Performance:** Bilder werden beim Build als WebP in mehreren Größen erzeugt
+  (`scripts/optimize-images.mjs`) und passend zum Bildschirm ausgeliefert; kein jQuery mehr.
 - **Mobil:** durchgehend responsiv (auch Tablet), Menü-Button für Smartphones.
 - **Barrierefreiheit:** semantisches HTML, Tastaturbedienung, „Zum Inhalt springen“-Link,
   Rücksicht auf „Bewegung reduzieren“, Lightbox mit nativem `<dialog>`.
 - **SEO:** Metadaten, Open Graph, strukturierte Daten (Schema.org `AccountingService`),
   `sitemap.xml` und `robots.txt`.
 - **Datenschutz:** Schriften liegen lokal (keine Google-Fonts-Abfrage), keine Cookies, kein Tracking.
-- **Sicherheit:** HTTPS-Links, Security-Header (`next.config.ts`).
+- **Sicherheit:** HTTPS-Links, Security-Header (`public/_headers`).
 - **Korrekturen:** Footer-Adresse („67655 Kaiserslautern“ statt doppelter Straße),
   veraltete Link-Adressen aktualisiert.
 
-## ⚠️ Vor dem Livegang
+## Rechtstexte
 
-Impressum, Datenschutz und Haftungsausschluss waren auf der alten Seite **leer**.
-Die neuen Seiten enthalten Entwürfe; gelb markierte Stellen (`[ … ]`) müssen ergänzt werden
-(u. a. Berufshaftpflichtversicherung, ggf. USt-IdNr., Hosting-Anbieter). Die Texte bitte
-vor Veröffentlichung prüfen lassen.
+Impressum, Datenschutz und Haftungsausschluss entsprechen den bisherigen Texten. Angepasst wurde nur,
+was nicht mehr stimmte:
 
-## Hosting
+- Gesetzesverweise: TMG → DDG, RStV → MStV, StBGebV → StBVV, TMG (Datenschutz) → TDDDG
+- Datenschutz: Abschnitte zu Cookies, eingebettetem Google Maps und Google Fonts an die neue Seite
+  angepasst (keine Cookies, Maps nur als Link, Schriften lokal); Kontaktformular entfernt (gibt es nicht);
+  Beschwerderecht bei der Aufsichtsbehörde ergänzt.
 
-Läuft auf jedem Node.js-Hosting oder z. B. bei Vercel. Für die DSGVO bietet sich ein Hoster
-mit Rechenzentrum in Deutschland/EU an.
+Bitte vor dem Livegang prüfen (lassen).
+
+## Hosting: Cloudflare Pages
+
+Die Seite wird als statischer Export gebaut (`output: "export"` in `next.config.ts`) und läuft
+damit ohne Server auf Cloudflare Pages.
+
+| Einstellung in Cloudflare Pages | Wert                             |
+| ------------------------------- | -------------------------------- |
+| Framework preset                | Next.js (Static HTML Export)     |
+| Build command                   | `npm run build`                  |
+| Build output directory          | `out`                            |
+| Node-Version                    | aus `.node-version` (22)         |
+
+Jeder Push auf `main` wird automatisch veröffentlicht; andere Branches bekommen eine Vorschau-URL.
+HTTP-Header (Sicherheit, Caching) stehen in `public/_headers`.
